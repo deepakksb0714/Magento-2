@@ -1,0 +1,39 @@
+commonLabels:
+  saas/tenant: "true"
+  saas/service: scalartax
+resources:
+- service.yaml
+patchesJson6902:
+- path: host-patch.yaml
+  target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+    name: scalartax-services-ingress
+- path: path-patch.yaml
+  target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+    name: scalartax-services-ingress
+- path: svc-acc-patch.yaml
+  target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: scalartax
+- path: env-patch.yaml
+  target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: scalartax
+- path: env-mysql-patch.yaml
+  target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: scalartax
+
+images:
+- name: KUSTOMIZE_IMAGE

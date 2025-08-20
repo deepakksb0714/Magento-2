@@ -1,0 +1,9 @@
+node_modules
+build
+dist
+.next
+*.json
+*.md
+*.html
+*.css
+*.scss

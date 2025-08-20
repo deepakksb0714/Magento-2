@@ -1,0 +1,9 @@
+class <%= class_name %>Service
+  def initialize(params = {})
+    # Initialize with any parameters
+  end
+
+  def call
+    # Implement the service logic here
+  end
+end

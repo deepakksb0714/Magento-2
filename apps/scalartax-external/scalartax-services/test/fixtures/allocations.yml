@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  condition: one
+  tax_code: MyString
+  percent_allocated: 9.99
+
+two:
+  condition: two
+  tax_code: MyString
+  percent_allocated: 9.99

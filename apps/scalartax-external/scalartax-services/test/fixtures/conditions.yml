@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transaction_rule: one
+  field: MyString
+  operator: MyString
+  value: 
+
+two:
+  transaction_rule: two
+  field: MyString
+  operator: MyString
+  value: 

@@ -1,0 +1,222 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.progress_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 2rem 1rem 2rem;
+  position: relative;
+}
+.progress_container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #f0f0f0;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+.progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: rotateY('-50%');
+  height: 4px;
+  z-index: 1;
+  background-color: #101111;
+  transition: all 0.8s ease-in;
+}
+.circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #e58568;
+  border-color: #1a1a1a;
+  color: #d0bcbc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  z-index: 1;
+}
+.circle.active {
+  background-color: #75b828;
+  color: #101111;
+  border-color: rgb(16, 18, 17);
+}
+.btn:active {
+  outline: none;
+  transform: scale(0.98);
+}
+:is(.circle, .square) > span {
+  position: absolute;
+  top: 42px;
+  z-index: 3;
+  font-size: x-small;
+  display: block;
+  text-align: center;
+  width: max-content;
+  color: inherit;
+}
+.btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 3rem;
+}
+.uploadScreen {
+  margin-top: 10px;
+}
+.uploadScreen > h2 {
+  color: #1a1a1a;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  margin: 5px 0px 5px 0;
+}
+.uploadScreen > p {
+  color: #1a1a1a;
+  font-size: 12px;
+  line-height: 15px;
+}
+.span-text {
+  color: #1a1a1a;
+  display: inline-block;
+  font-size: 12.25px;
+  line-height: 14.7px;
+  margin: 15.75px 0px 0px;
+  padding: 0px 0px 0px 19.25px;
+}
+.excla-ico > svg {
+  color: #ffff;
+  background-color: deepskyblue;
+  border-radius: 11px;
+  width: 15px;
+  margin-left: 25px;
+  cursor: pointer;
+}
+.download-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin: 1rem 0 1rem 0;
+  width: fit-content;
+}
+.download-icon {
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70px;
+  height: 15px;
+  border-right: 1px solid gray;
+  padding-right: 20px;
+  cursor: pointer;
+}
+.cst-link {
+  text-decoration: none;
+  color: skyblue;
+  cursor: pointer;
+  display: 'inline' 
+}
+.cst-link:hover {
+  text-decoration: underline;
+  color: slateblue;
+}
+.dropzone {
+  min-height: 175px;
+  cursor: pointer;
+}
+
+
+
+.custom-tooltip .tooltip-inner {
+  text-align: left;
+  font-size: 0.9rem; /* Adjust font size */
+  padding: 10px; /* Add some padding for better readability */
+  max-width: 300px;
+}
+
+.data-grid {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+} */
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.custom-modal-body {
+  max-height: 400px; /* Adjust this value as per your requirement */
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding-right: 15px; /* Adds space for scrollbar */
+}
+
+.custom-link {
+  color: blue !important;
+}
+
+.tax-muted {
+  color: #000000; /* Muted grey color, similar to Bootstrap's text-muted */
+  font-weight: normal; /* Makes the text not bold */
+  font-size: 16px;
+}
+
+/* In your CSS file */
+.custom-dropdown {
+  width: 150px; /* Adjust width here */
+}
+
+.custom-paragraph {
+  width: 80%;            
+}
+
+/* In App.css */
+.border-end {
+  border-right: 1px solid #d3d3d3; /* Custom color for border */
+  height: 100%; /* Adjust height if needed */
+}
+
+.error-message {
+  color: #dc3545; /* Bootstrap's text-danger color */
+  font-size: 0.75rem; /* Adjust to your desired size */
+  margin-top: 0.25rem; /* Optional: to add space above */
+}

@@ -1,0 +1,128 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../../assets/fonts/SourceSansPro-Black.otf') format('truetype'),
+    url('../../../assets/fonts/SourceSansPro-Bold.otf') format('woff2'),
+    url('../../../assets/fonts/SourceSansPro-ExtraLight.otf') format('woff2'),
+    url('../../../assets/fonts/SourceSansPro-Light.otf') format('woff2');
+}
+.container-inv {
+  margin: 25px 10px 25px 10px;
+}
+.linkFtext {
+  cursor: pointer;
+  margin: auto;
+  margin-left: 10px;
+  box-shadow: #fff 0px 0px 0px 1px;
+  color: #015f87;
+  font-size: 14px;
+  font-weight: 300;
+  justify-content: center;
+  line-height: 21px;
+  padding: 0;
+}
+.linkFtext:hover {
+  text-decoration: underline;
+}
+.icon-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  margin: 10px 0px 10px 0px;
+}
+h2_label {
+  color: #1a1a1a;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  margin: 10px 0px 7px 10px;
+  text-align: left;
+  height: 72.5px;
+}
+.h3_label {
+  color: #6f6f6f;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 30px;
+  margin: 2.8px 0px 2.8px 0px;
+  text-align: left;
+}
+.span-text {
+  color: #015f87;
+  display: inline;
+  font-size: 14px;
+  line-height: 21px;
+  padding: 0px 0px 0px 19.6px;
+  text-align: left;
+}
+.sales-inv-address-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px 0px 20px 0px;
+}
+.sales-inv-box {
+  margin: 10px 10px 10px 10px;
+  padding-left: 0.5em;
+  border-right: 1px solid #ddd;
+  min-height: 710px;
+}
+.sales-inv-end-box {
+  border: none;
+}
+.address-block {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 87%;
+}
+.address-line {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 5px;
+}
+/* Style for the success alert */
+.alert-success {
+  padding-bottom: 1px;
+  padding-top: 1px;
+  color: green;
+  background: none;
+  border: none;
+  margin-bottom: 1px;
+  margin-top: 1px;
+}
+
+/* Adjust padding for the dismissible alert */
+.alert-dismissible {
+  padding-right: 3rem; /* Space for the dismiss button */
+  padding-top: 13px;   /* Adjust padding to align the button and message */
+}
+
+/* Styling for the close button inside dismissible alert */
+.alert-danger {
+  padding-bottom: 1px;
+  padding-top: 1px;
+  color: red;
+  background: none;
+  border: none;
+  margin-bottom: 1px;
+  margin-top: 1px;
+}
+
+.alert-dismissible-danger {
+  padding-right: 3rem; /* Space for the dismiss button */
+  padding-top: 13px;   /* Adjust padding to align the button and message */
+}
+
+
+.alert-dismissible.alert-danger {
+  padding-right: 3rem; /* Space for the dismiss button */
+  padding-top: 13px;   /* Adjust padding to align the button and message */
+}
+
+/* Customizing the close button for the dismissable alert */
+.alert-dismissible .close {
+  padding: 0.5rem; /* Adjust the close button padding to ensure proper alignment */
+  font-size: 1.5rem; /* Optional: Adjust close button size */
+}

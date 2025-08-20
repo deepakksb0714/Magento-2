@@ -1,0 +1,17 @@
+.headc {
+    margin-bottom: 15px;
+    font-size: x-large;
+}
+.margB {
+    margin-bottom: 25px;
+}
+.margB label {
+    font-size: large;
+}
+.othrAdd p {
+    padding-left: 0;
+    font-size: medium;
+}
+.othrAdd {
+    margin: 25px 0 25px 0;
+}

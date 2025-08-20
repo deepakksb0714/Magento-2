@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  effective: 2024-12-07
+  expiration: 2024-12-07
+  rule_type: MyString
+  document_types: MyText
+  ignore_rule_on_error: false
+  inactive: false
+
+two:
+  name: MyString
+  effective: 2024-12-07
+  expiration: 2024-12-07
+  rule_type: MyString
+  document_types: MyText
+  ignore_rule_on_error: false
+  inactive: false

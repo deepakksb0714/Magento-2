@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  template_name: MyString
+  mapped_columns: MyText
+  user_id: MyString
+  transaction_file: one
+
+two:
+  template_name: MyString
+  mapped_columns: MyText
+  user_id: MyString
+  transaction_file: two

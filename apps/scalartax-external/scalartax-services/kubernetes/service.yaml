@@ -1,0 +1,118 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scalartax
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scalartax
+  template:
+    metadata:
+      labels:
+        app: scalartax
+      annotations:
+        vault.hashicorp.com/agent-init-first: 'true'
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/agent-inject-init: "true"
+        vault.hashicorp.com/agent-cache-enable: "true"
+        vault.hashicorp.com/role: "devweb-app"
+        vault.hashicorp.com/agent-inject-secret-database-connect.sh: "database/creds/readonly"
+        vault.hashicorp.com/agent-inject-template-database-connect.sh: |
+          {{- with secret "database/creds/readonly" -}}
+          export DB_USER={{ .Data.username }}
+          export DB_PASSWORD={{ .Data.password }}
+          {{- end -}}
+        vault.hashicorp.com/agent-inject-secret-aws-secrets.sh: "aws-secrets/config"
+        vault.hashicorp.com/agent-inject-template-aws-secrets.sh: |
+          {{- with secret "aws-secrets/config" -}}
+          export AWS_ACCESS_KEY_ID={{ .Data.AWS_ACCESS_KEY_ID }}
+          export AWS_SECRET_ACCESS_KEY={{ .Data.AWS_SECRET_ACCESS_KEY }}
+          export AWS_REGION={{ .Data.AWS_REGION }}
+          export AWS_S3_BUCKET={{ .Data.AWS_S3_BUCKET }}
+          export ENCRYPTION_KEY={{ .Data.ENCRYPTION_KEY }}
+          export ENCRYPTION_SALT={{ .Data.ENCRYPTION_SALT }}
+          {{- end -}}
+    spec:
+      initContainers:
+      - name: db-migrate
+        image: KUSTOMIZE_IMAGE
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            set -a
+            . /vault/secrets/database-connect.sh
+            set +a
+            rails db:create
+            rails db:migrate
+            rails db:seed
+        env:
+          - name: DB_HOST
+            value: mysql-service.default.svc.cluster.local
+          - name: DB_PORT
+            value: "3306"
+          - name: DB_NAME_PRIMARY
+            value: KUSTOMIZE_DB
+          - name: DB_NAME_SECONDARY
+            value: scalarhub_global
+      containers:
+        - name: scalartax
+          image: KUSTOMIZE_IMAGE
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              set -a
+              . /vault/secrets/database-connect.sh
+              set +a
+              sleep 2
+              set -a
+              . /vault/secrets/aws-secrets.sh
+              set +a
+              rails s -b '0.0.0.0' -p 5000
+          ports:
+            - containerPort: 5000
+              name: "http"
+          env:
+            - name: DB_HOST
+              value: mysql-service.default.svc.cluster.local
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_NAME_PRIMARY
+              value: KUSTOMIZE_DB
+            - name: DB_NAME_SECONDARY
+              value: scalarhub_global
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scalartax-services
+spec:
+  selector:
+    app: scalartax
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: NodePort
+ 
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: scalartax-services-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.org/mergeable-ingress-type: "minion"
+spec:
+  rules:
+    - host: KUSTOMIZE_API_HOST
+      http:
+        paths:
+          - path: /KUSTOMIZE_TENANT/scalartax
+            pathType: Prefix
+            backend:
+              service:
+                name: scalartax-services
+                port:
+                  number: 80
